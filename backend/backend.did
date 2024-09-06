@@ -1,0 +1,24 @@
+type Result_1 = 
+ variant {
+   err: text;
+   ok: GemStone;
+ };
+type Result = 
+ variant {
+   err: text;
+   ok;
+ };
+type GemStone = 
+ record {
+   description: text;
+   id: nat;
+   image: text;
+   name: text;
+   rating: opt nat;
+ };
+service : {
+  addGemStone: (text, text, text) -> (nat);
+  getGemStone: (nat) -> (Result_1) query;
+  getGemStones: () -> (vec GemStone) query;
+  rateGemStone: (nat, nat) -> (Result);
+}
